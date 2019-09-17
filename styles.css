@@ -1,0 +1,123 @@
+:root {
+  --twitter-background-color: #c0deed;
+}
+
+body {
+  background: var(--twitter-background-color);
+	font-family: sans-serif;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+}
+
+section {
+  border-radius: 5px;
+  background: white;
+  margin: 0 50px 0 50px;
+}
+
+#profile-section {
+  width: 400px;
+	padding: 0 25px 25px 25px;
+}
+
+#tweets-section {
+  width: 800px;
+}
+
+.tweets-header, .profile-header {
+  border-bottom: 1px gray solid;
+  padding: 0 15px 15px 15px;
+}
+
+.profile-header {
+	text-align: center;
+}
+
+#username {
+	margin: 0;
+	display: inline-block;
+}
+
+.verified {
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+}
+
+#user-bio {
+	font-style: italic;
+}
+
+#tweets-followers {
+	float: right;
+	width: 100px;
+}
+
+#tweets-followers p {
+	display: inline;
+	margin: 5px;
+}
+
+#follow-icon {
+	width: 25px;
+	height: 25px;
+	float: right;
+	margin-top: 20px;
+	cursor: pointer;
+}
+
+.tweet {
+  padding: 0 15px 15px 0;
+	margin-right: 40px;
+  list-style: none;
+	border-bottom: 1px gray solid;
+}
+
+.tweet:last-of-type {
+	border: none;
+}
+
+.tweet-buttons {
+	display: flex;
+}
+
+.tweet-button {
+	display: flex;
+	margin-right: 50px;
+	width: 80px;
+}
+
+.tweet-button:hover {
+	cursor: pointer;
+}
+
+.tweet-value {
+	position: relative;
+	left: 28px;
+	bottom: 15px;
+}
+
+.comment-button {
+	background: url('https://image.flaticon.com/icons/svg/25/25663.svg');
+	width: 20px;
+	height: 20px;
+	background-size: 20px 20px;
+	background-repeat: no-repeat;
+}
+
+.like-button {
+	background: url('https://image.flaticon.com/icons/svg/148/148836.svg');
+	width: 20px;
+	height: 20px;
+	background-size: 20px 20px;
+}
+
+.retweet-button {
+	background: url('https://image.flaticon.com/icons/svg/33/33571.svg');
+	width: 20px;
+	height: 20px;
+	background-size: 20px 20px;
+}
