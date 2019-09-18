@@ -1,4 +1,4 @@
-console.clear()
+
 function constructUser (name, handle, bio, location) {
   return {
     name: name,
@@ -105,6 +105,7 @@ function displayProfileInfo (user) {
   document.getElementById('number-of-followers').textContent = user.followers
 }
 
+// make this so the students instantiate their own user and then pass that user to all of the appropriate functions
 const chrisBridges = constructUser('Chris Bridges', 'chris_bridges', 'JS Dev who loves teaching', 'Boston, MA')
 
 chrisBridges.writeTweet('JS is dope')

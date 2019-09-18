@@ -4,26 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <link href="styles.css" rel="stylesheet" type="text/css">
+  <title>Twitter Clone</title>
 </head>
 <body>
-  <section id="profile-section">
-    <h2 class="profile-header">My Profile</h2>
-		<h2 id="username"></h2>
-		<img class="verified" src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg">
-		<h3 id="user-handle"></h3>
-		<p id="user-bio"></p>
-		<p id="user-location"></p>
-		<div id="tweets-followers">
-			<strong id="number-of-tweets"></strong><p>tweets</p>
-			<hr>
-			<strong id="number-of-followers"></strong><p>followers</p>
-			<img id="follow-icon" src="https://image.flaticon.com/icons/svg/983/983886.svg">
-		</div>
-  </section>
-  <section id="tweets-section">
-    <h2 class="tweets-header">Tweets</h2>
-    <ul id="tweets"></ul>
-  </section>
+  <main>
+    <section id="profile-section">
+      <h2 class="profile-header">My Profile</h2>
+      <h2 id="username"></h2>
+      <img class="verified" src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg">
+      <h3 id="user-handle"></h3>
+      <p id="user-bio"></p>
+      <p id="user-location"></p>
+      <div id="tweets-followers">
+        <strong id="number-of-tweets"></strong><p>tweets</p>
+        <hr>
+        <strong id="number-of-followers"></strong><p>followers</p>
+        <img id="follow-icon" src="https://image.flaticon.com/icons/svg/983/983886.svg">
+      </div>
+    </section>
+    <section id="tweets-section">
+      <!-- modern twitter has a static input box always on top, add that instead of worrying about dynamic one -->
+      <h2 class="tweets-header">Tweets</h2>
+      <ul id="tweets"></ul>
+    </section>
+    <script src="scripts.js"></script>
+  </main>
 </body>
 </html>
