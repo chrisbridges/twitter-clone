@@ -1,22 +1,4 @@
 
-function constructUser (name, handle, bio, location) {
-  return {
-    name: name,
-    handle: handle,
-    bio: bio,
-    location: location,
-    followers: 0,
-    tweets: [],
-    writeTweet: function (content) {
-      const tweet = constructTweet(content)
-      this.tweets.push(tweet)
-    },
-    addFollower: function () {
-      this.followers++
-    }
-  }
-}
-
 function constructTweet (content) {
   return {
     content: content,
@@ -35,6 +17,24 @@ function constructTweet (content) {
   }
 }
 
+function constructUser (name, handle, bio, location) {
+  return {
+    name: name,
+    handle: handle,
+    bio: bio,
+    location: location,
+    followers: 0,
+    tweets: [],
+    writeTweet: function (content) {
+      const tweet = constructTweet(content)
+      this.tweets.push(tweet)
+    },
+    addFollower: function () {
+      this.followers++
+    }
+  }
+}
+
 function displayTweets (user) {
   const tweetsList = document.getElementById('tweets')
   // clear tweets before each display
@@ -43,7 +43,7 @@ function displayTweets (user) {
     const tweetListElement = document.createElement('li')
     tweetListElement.setAttribute('class', 'tweet')
     tweetListElement.setAttribute('data-id', index)
-    tweetsList.appendChild(tweetListElement)
+    tweetsList.prepend(tweetListElement)
     const { likes, retweets, comments } = tweet
     const tweetHTML = constructTweetHTML(tweet.content, likes, retweets, comments.length, comments)
     tweetListElement.innerHTML = tweetHTML
@@ -131,7 +131,7 @@ function listenForAddComment (user) {
   })
 }
 
-function displayProfileInfo (user) {
+function displayProfileInfo (user) { // students can fill this out
   document.getElementById('username').textContent = user.name
   document.getElementById('user-handle').textContent = `@${user.handle}`
   document.getElementById('user-bio').textContent = user.bio
@@ -153,8 +153,13 @@ chrisBridges.addFollower()
 chrisBridges.addFollower()
 chrisBridges.addFollower()
 
-displayTweets(chrisBridges)
-displayProfileInfo(chrisBridges)
-listenForClicks(chrisBridges)
-listenForAddTweet(chrisBridges)
-listenForAddComment(chrisBridges)
+function run (user) {
+  displayTweets(user)
+  displayProfileInfo(user)
+  listenForClicks(user)
+  listenForAddTweet(user)
+  listenForAddComment(user)
+}
+
+// plug in the user that you created in our run function here
+run(chrisBridges)
