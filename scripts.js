@@ -77,7 +77,7 @@ function createCommentButtonForTweet (value) {
 
 function constructCommentsForTweet (comments) {
   if (comments) {
-    return comments.reduce((total, comment) => total + `<li class="tweet-comment">${comment}</li>`, '')
+    return comments.reduce((total, comment) => total + `<li class="tweet-comment">&mdash; ${comment}</li>`, '')
   }
   return ``
 }
@@ -169,7 +169,3 @@ displayProfileInfo(chrisBridges)
 listenForClicks(chrisBridges)
 listenForAddTweet(chrisBridges)
 listenForAddComment(chrisBridges)
-
-// document.addEventListener('keyup', function (event) {
-//   console.log(event.key)
-// })
