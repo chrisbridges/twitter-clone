@@ -96,6 +96,20 @@ function listenForClicks (user) {
   })
 }
 
+function listenForAddTweet (user) {
+  const tweetInput = document.getElementById('add-tweet')
+
+  tweetInput.addEventListener('keyup', function (event) {
+    if (event.key === 'Enter') {
+      const tweetContent = document.getElementById('add-tweet').value
+      user.writeTweet(tweetContent)
+      document.getElementById('add-tweet').value = ''
+      displayTweets(user)
+      displayProfileInfo(user)
+    }
+  })
+}
+
 function displayProfileInfo (user) {
   document.getElementById('username').textContent = user.name
   document.getElementById('user-handle').textContent = `@${user.handle}`
@@ -111,7 +125,18 @@ const chrisBridges = constructUser('Chris Bridges', 'chris_bridges', 'JS Dev who
 chrisBridges.writeTweet('JS is dope')
 chrisBridges.writeTweet('JS is dope')
 chrisBridges.writeTweet('JS is dope')
+chrisBridges.addFollower()
+chrisBridges.addFollower()
+chrisBridges.addFollower()
+chrisBridges.addFollower()
+chrisBridges.addFollower()
+chrisBridges.addFollower()
 
 displayTweets(chrisBridges)
 displayProfileInfo(chrisBridges)
 listenForClicks(chrisBridges)
+listenForAddTweet(chrisBridges)
+
+// document.addEventListener('keyup', function (event) {
+//   console.log(event.key)
+// })
