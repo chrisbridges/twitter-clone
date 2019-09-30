@@ -29,13 +29,12 @@ section {
 	width: 120px;
 	height: auto;
 	float: left;
-	border-radius: 25%;
+	border-radius: 50%;
 	margin-left: 35px;
 }
 
 .profile-info {
 	float: right;
-	/* clear: both; */
 }
 
 #tweets-section {
@@ -163,4 +162,15 @@ section {
 	width: 20px;
 	height: 20px;
 	background-size: 20px 20px;
+}
+
+.add-comment-input {
+	margin: 15px auto;
+	width: 70%;
+	height: 40px;
+	font-size: 18px;
+}
+
+.add-comment-input::placeholder {
+	font-size: 18px;
 }

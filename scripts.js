@@ -54,7 +54,10 @@ function constructTweetHTML (tweetContent, numberOfLikes, numberOfRetweets, numb
   const likeButton = createLikeButtonForTweet(numberOfLikes)
   const retweetButton = createRetweetButtonForTweet(numberOfRetweets)
   const commentButton = createCommentButtonForTweet(numberOfComments)
-  return `<p>${tweetContent}</p><div class="tweet-buttons">${commentButton}${likeButton}${retweetButton}</div>`
+  return `
+    <p>${tweetContent}</p><div class="tweet-buttons">${commentButton}${likeButton}${retweetButton}</div>
+    <input class="add-comment-input" placeholder="Add comment to this tweet...">
+  `
 }
 
 function createLikeButtonForTweet (value) {
@@ -83,12 +86,17 @@ function listenForClicks (user) {
       user.tweets[tweetIndex].retweet()
       displayTweets(user)
     }
-    if (event.target.matches('.comment-button')) {
-      const tweetToLike = event.target.closest('.tweet')
-      const tweetIndex = tweetToLike.dataset.id
-      user.tweets[tweetIndex].addComment('something')
-      displayTweets(user)
-    }
+    // if (event.target.matches('.comment-button')) {
+    //   const tweetToComment = event.target.closest('.tweet')
+
+    //   const addCommentInput = `<input class="add-comment-input" placeholder="Add comment to this tweet...">`
+    //   const tweetComments = `<ul class="tweet-comments"></ul>`
+    //   tweetToComment.appendChild(addCommentInput)
+
+    //   const tweetIndex = tweetToComment.dataset.id
+    //   user.tweets[tweetIndex].addComment('something')
+    //   displayTweets(user)
+    // }
     if (event.target.matches('#follow-icon')) {
       user.addFollower()
       displayProfileInfo(user)
@@ -102,10 +110,20 @@ function listenForAddTweet (user) {
   tweetInput.addEventListener('keyup', function (event) {
     if (event.key === 'Enter') {
       const tweetContent = document.getElementById('add-tweet').value
-      user.writeTweet(tweetContent)
-      document.getElementById('add-tweet').value = ''
-      displayTweets(user)
-      displayProfileInfo(user)
+      if (tweetContent.trim() !== '') {
+        user.writeTweet(tweetContent)
+        document.getElementById('add-tweet').value = ''
+        displayTweets(user)
+        displayProfileInfo(user)
+      }
+    }
+  })
+}
+
+function listenForAddComment (user) {
+  document.addEventListener('keyup', function (event) {
+    if (event.target.matches('.add-comment-input')) {
+      console.log('comment')
     }
   })
 }
@@ -136,6 +154,7 @@ displayTweets(chrisBridges)
 displayProfileInfo(chrisBridges)
 listenForClicks(chrisBridges)
 listenForAddTweet(chrisBridges)
+listenForAddComment(chrisBridges)
 
 // document.addEventListener('keyup', function (event) {
 //   console.log(event.key)
