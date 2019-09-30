@@ -39,7 +39,7 @@ function displayTweets (user) {
   const tweetsList = document.getElementById('tweets')
   // clear tweets before each display
   tweetsList.innerHTML = ''
-  user.tweets.forEach((tweet, index) => {
+  user.tweets.forEach((tweet, index) => { // find way for students to do this since it's in the curriculum
     const tweetListElement = document.createElement('li')
     tweetListElement.setAttribute('class', 'tweet')
     tweetListElement.setAttribute('data-id', index)
@@ -141,11 +141,11 @@ function displayProfileInfo (user) {
 }
 
 // make this so the students instantiate their own user and then pass that user to all of the appropriate functions
-const chrisBridges = constructUser('Chris Bridges', 'chris_bridges', 'JS Dev who loves teaching', 'Boston, MA')
+const chrisBridges = constructUser('Chris Bridges', 'chris__bridges', 'JS Dev who loves teaching', 'Boston, MA')
 
-chrisBridges.writeTweet('JS is dope')
-chrisBridges.writeTweet('JS is dope')
-chrisBridges.writeTweet('JS is dope')
+chrisBridges.writeTweet('JS is fun')
+chrisBridges.writeTweet('cereal is so good')
+chrisBridges.writeTweet('Is this dress white or gold?')
 chrisBridges.addFollower()
 chrisBridges.addFollower()
 chrisBridges.addFollower()
