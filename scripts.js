@@ -1,44 +1,20 @@
-
-function constructTweet (content) {
-  return {
-    content: content,
-    retweets: 0,
-    likes: 0,
-    comments: [],
-    like: function () {
-      this.likes++
-    },
-    retweet: function () {
-      this.retweets++
-    },
-    addComment: function (comment) {
-      this.comments.push(comment)
-    }
-  }
+// write a factory function to create a tweet
+// our tweets will include (tweet) content, retweets, likes, and comments
+// write corresponding methods to edit data values for each tweet - likes, retweets, comments
+function constructTweet () {
 }
 
-function constructUser (name, handle, bio, location) {
-  return {
-    name: name,
-    handle: handle,
-    bio: bio,
-    location: location,
-    followers: 0,
-    tweets: [],
-    writeTweet: function (content) {
-      const tweet = constructTweet(content)
-      this.tweets.push(tweet)
-    },
-    addFollower: function () {
-      this.followers++
-    }
-  }
+// write a factory function to create our user
+// our user will include name, twitter handle, bio, location, followers, tweets
+// as well as methods for writing tweets and adding followers
+function constructUser () {
 }
 
 function displayTweets (user) {
   const tweetsList = document.getElementById('tweets')
   // clear tweets before each display
   tweetsList.innerHTML = ''
+
   user.tweets.forEach((tweet, index) => { // find way for students to do this since it's in the curriculum
     const tweetListElement = document.createElement('li')
     tweetListElement.setAttribute('class', 'tweet')
@@ -132,26 +108,15 @@ function listenForAddComment (user) {
 }
 
 function displayProfileInfo (user) { // students can fill this out
-  document.getElementById('username').textContent = user.name
-  document.getElementById('user-handle').textContent = `@${user.handle}`
-  document.getElementById('user-bio').textContent = user.bio
-  document.getElementById('user-location').textContent = user.location
-  document.getElementById('number-of-tweets').textContent = user.tweets.length
-  document.getElementById('number-of-followers').textContent = user.followers
+  document.getElementById('username').textContent = null
+  document.getElementById('user-handle').textContent = null
+  document.getElementById('user-bio').textContent = null
+  document.getElementById('user-location').textContent = null
+  document.getElementById('number-of-tweets').textContent = null
+  document.getElementById('number-of-followers').textContent = null
 }
 
-// make this so the students instantiate their own user and then pass that user to all of the appropriate functions
-const chrisBridges = constructUser('Chris Bridges', 'chris__bridges', 'JS Dev who loves teaching', 'Boston, MA')
-
-chrisBridges.writeTweet('JS is fun')
-chrisBridges.writeTweet('cereal is so good')
-chrisBridges.writeTweet('Is this dress white or gold?')
-chrisBridges.addFollower()
-chrisBridges.addFollower()
-chrisBridges.addFollower()
-chrisBridges.addFollower()
-chrisBridges.addFollower()
-chrisBridges.addFollower()
+// create a user using the factory function we created to bring our app to life
 
 function run (user) {
   displayTweets(user)
@@ -162,4 +127,4 @@ function run (user) {
 }
 
 // plug in the user that you created in our run function here
-run(chrisBridges)
+run()
