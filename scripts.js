@@ -37,9 +37,9 @@ function constructTweet (content) {
 
 function displayTweets (user) {
   const tweetsList = document.getElementById('tweets')
-  // 	clear tweets before each display
+  // clear tweets before each display
   tweetsList.innerHTML = ''
- 	user.tweets.forEach((tweet, index) => {
+  user.tweets.forEach((tweet, index) => {
     const tweetListElement = document.createElement('li')
     tweetListElement.setAttribute('class', 'tweet')
     tweetListElement.setAttribute('data-id', index)
@@ -96,17 +96,6 @@ function listenForClicks (user) {
       user.tweets[tweetIndex].retweet()
       displayTweets(user)
     }
-    // if (event.target.matches('.comment-button')) {
-    //   const tweetToComment = event.target.closest('.tweet')
-
-    //   const addCommentInput = `<input class="add-comment-input" placeholder="Add comment to this tweet...">`
-    //   const tweetComments = `<ul class="tweet-comments"></ul>`
-    //   tweetToComment.appendChild(addCommentInput)
-
-    //   const tweetIndex = tweetToComment.dataset.id
-    //   user.tweets[tweetIndex].addComment('something')
-    //   displayTweets(user)
-    // }
     if (event.target.matches('#follow-icon')) {
       user.addFollower()
       displayProfileInfo(user)
