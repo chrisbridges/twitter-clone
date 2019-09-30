@@ -122,8 +122,12 @@ function listenForAddTweet (user) {
 
 function listenForAddComment (user) {
   document.addEventListener('keyup', function (event) {
-    if (event.target.matches('.add-comment-input')) {
-      console.log('comment')
+    if (event.target.matches('.add-comment-input') && event.key === 'Enter') {
+      const tweetToAddComment = event.target.closest('.tweet')
+      const tweetIndex = tweetToAddComment.dataset.id
+      const commentContent = event.target.value
+      user.tweets[tweetIndex].addComment(commentContent)
+      displayTweets(user)
     }
   })
 }
