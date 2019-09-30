@@ -45,17 +45,20 @@ function displayTweets (user) {
     tweetListElement.setAttribute('data-id', index)
     tweetsList.appendChild(tweetListElement)
     const { likes, retweets, comments } = tweet
-    const tweetHTML = constructTweetHTML(tweet.content, likes, retweets, comments.length)
+    const tweetHTML = constructTweetHTML(tweet.content, likes, retweets, comments.length, comments)
     tweetListElement.innerHTML = tweetHTML
   })
 }
 
-function constructTweetHTML (tweetContent, numberOfLikes, numberOfRetweets, numberOfComments) {
+function constructTweetHTML (tweetContent, numberOfLikes, numberOfRetweets, numberOfComments, comments) {
   const likeButton = createLikeButtonForTweet(numberOfLikes)
   const retweetButton = createRetweetButtonForTweet(numberOfRetweets)
   const commentButton = createCommentButtonForTweet(numberOfComments)
+  const commentValues = constructCommentsForTweet(comments)
+
   return `
     <p>${tweetContent}</p><div class="tweet-buttons">${commentButton}${likeButton}${retweetButton}</div>
+    <ul class="tweet-comments">${commentValues}</ul>
     <input class="add-comment-input" placeholder="Add comment to this tweet...">
   `
 }
@@ -70,6 +73,13 @@ function createRetweetButtonForTweet (value) {
 
 function createCommentButtonForTweet (value) {
   return `<div class="tweet-button comment-button"><p class="tweet-value">${value}</p></div>`
+}
+
+function constructCommentsForTweet (comments) {
+  if (comments) {
+    return comments.reduce((total, comment) => total + `<li class="tweet-comment">${comment}</li>`, '')
+  }
+  return ``
 }
 
 function listenForClicks (user) {
